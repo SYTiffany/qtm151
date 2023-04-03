@@ -34,7 +34,7 @@ HINT: Include any column names with upper case in doube quotations, <br> e.g.
 
 DROP TABLE IF EXISTS lap_times;
 CREATE TABLE lap_times (
-        "raceId"      int PRIMARY KEY,
+        "raceId"      int,
         "driverId"    int,
         lap           int,
         position      int,
@@ -42,10 +42,7 @@ CREATE TABLE lap_times (
         milliseconds  int
 );
 
-COPY lap_times
-FROM '/Users/symgg/Documents/GitHub/qtm151/Assignment 8/data_raw/lap_times.csv'
-WITH (DELIMITER ',', FORMAT csv, HEADER MATCH)
-
+-- \COPY lap_times FROM '/Users/symgg/Documents/GitHub/qtm151/Assignment 8/data_raw/lap_times.csv' WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 
 -- SQLBook: Markup
 <font size = "5">
@@ -74,10 +71,7 @@ CREATE TABLE drivers (
         url           varchar(255)
 );
 
-COPY drivers
-FROM '/Users/symgg/Documents/GitHub/qtm151/Assignment 8/data_raw/drivers.csv'
-WITH (DELIMITER ',', FORMAT csv, HEADER MATCH)
-
+-- \COPY drivers FROM '/Users/symgg/Documents/GitHub/qtm151/Assignment 8/data_raw/drivers.csv' WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 
 -- SQLBook: Markup
 <font size = "5">
@@ -98,12 +92,12 @@ Hints:
 
 
 -- SQLBook: Code
+-- Active: 1679490274960@@127.0.0.1@5432@postgres
 -- Write your own code
 
 SELECT * FROM drivers
 WHERE nationality = 'American'
-ORDER BY nationality ASC;
-
+ORDER BY surname ASC;
 
 -- SQLBook: Markup
 <font size = "5">
@@ -141,10 +135,11 @@ upper case and lower case letters
 -- Write your own code
 
 SELECT "driverId",
-        AVG(milliseconds) AS mean_milliseconds
+        AVG(milliseconds) AS mean_milliseconds,
+        SUM(milliseconds) AS sum_milliseconds
 FROM lap_times
 GROUP BY "driverId"
-
+ORDER BY sum_milliseconds ASC;
 
 -- SQLBook: Markup
 <font size = "5">

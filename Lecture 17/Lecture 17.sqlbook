@@ -177,7 +177,7 @@ ORDER BY victories DESC;
 -- The following code would NOT work because we used double quotations
 -- "Double quotations" are used to refer to column names
 SELECT * FROM drivers
-WHERE nationality = 'German';
+WHERE nationality = "German";
 -- SQLBook: Markup
 <font size = "5">
 
@@ -188,10 +188,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-select driver_id, nationality from drivers
-where (victories >= 60)
-
-
+SELECT nationality driver_id FROM drivers
+WHERE victories > 60 
 
 
 -- SQLBook: Markup

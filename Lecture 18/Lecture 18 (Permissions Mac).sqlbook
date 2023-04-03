@@ -1,5 +1,5 @@
 -- SQLBook: Markup
-# <span style="color:darkblue"> Lecture 18 - Permissions Mac </span>
+# <span style="color:lightblue"> Lecture 18 - Permissions Mac </span>
 
 <font size = "5">
 
@@ -9,7 +9,7 @@ does not have permission to access it. <br>
 To overcome these permission issues on a mac, you can copy <br>
 your files to a temporary folder. Follow these steps
 -- SQLBook: Markup
-# <span style="color:darkblue"> Alternative A </span>
+# <span style="color:lightblue"> Alternative A </span>
 -- SQLBook: Markup
 <font size = "5">
 
@@ -36,7 +36,7 @@ in the finder window
 
 ``` Copy "us_congress_members.csv" as PATHNAME ```
 -- SQLBook: Markup
-# <span style="color:darkblue"> Alternative B </span>
+# <span style="color:lightblue"> Alternative B </span>
 
 <font size = "5">
 
