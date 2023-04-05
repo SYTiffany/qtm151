@@ -73,6 +73,8 @@ CREATE TABLE drivers (
 
 -- \COPY drivers FROM '/Users/symgg/Documents/GitHub/qtm151/Assignment 8/data_raw/drivers.csv' WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 
+SELECT * FROM drivers
+
 -- SQLBook: Markup
 <font size = "5">
 
@@ -139,7 +141,7 @@ SELECT "driverId",
         SUM(milliseconds) AS sum_milliseconds
 FROM lap_times
 GROUP BY "driverId"
-ORDER BY sum_milliseconds ASC;
+ORDER BY sum_milliseconds ASC
 
 -- SQLBook: Markup
 <font size = "5">

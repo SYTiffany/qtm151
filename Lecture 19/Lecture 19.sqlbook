@@ -113,7 +113,11 @@ from ".csv" files using the command <br>
 
 -- SQLBook: Code
 
-COPY nameoftale FROM '/Users/symgg/Documents/GitHub/qtm151/Lecture 19/data_raw/lap_times.csv' WITH (DELIMITER ',', FORMAT csv, HEADER MATCH)
+-- I import the data via sql shell (using alternative B provided in L18). My computer denied the permission.
+--\COPY nameoftale FROM '/Users/symgg/Documents/GitHub/qtm151/Lecture 19/data_raw/lap_times.csv' WITH (DELIMITER ',', FORMAT csv, HEADER MATCH)
+
+SELECT * FROM nameoftable
+
 -- SQLBook: Markup
 <font size = "5">
 
@@ -122,6 +126,10 @@ COPY nameoftale FROM '/Users/symgg/Documents/GitHub/qtm151/Lecture 19/data_raw/l
 - Subset one of the above datasets using ``` WHERE ```
 - Then sort the datasets in ascending or descending order 
 -- SQLBook: Code
+
+SELECT * FROM nameoftable
+WHERE nationality = 'American'
+ORDER BY surname ASC;
 
 -- SQLBook: Markup
 <font size = "5">
@@ -135,6 +143,13 @@ COPY nameoftale FROM '/Users/symgg/Documents/GitHub/qtm151/Lecture 19/data_raw/l
 
 
 HINT: See the end of lectures 17
+-- SQLBook: Code
+-- group by "driverId"
+SELECT "driverId",
+        AVG(milliseconds) AS mean_milliseconds,
+        SUM(milliseconds) AS sum_milliseconds
+FROM nameoftable
+GROUP BY "driverId"
 -- SQLBook: Markup
 <font size = "5">
 
@@ -144,6 +159,15 @@ HINT: See the end of lectures 17
 - Then sort using ``` ORDER BY ```
 
 HINT: See the end of lectures 17 and 18
+-- SQLBook: Code
+
+SELECT "driverId",
+        AVG(milliseconds) AS mean_milliseconds,
+        SUM(milliseconds) AS sum_milliseconds
+FROM lap_times
+GROUP BY "driverId"
+ORDER BY sum_milliseconds ASC;
+
 -- SQLBook: Markup
 <font size = "5">
 
@@ -152,3 +176,15 @@ HINT: See the end of lectures 17 and 18
 - Compute an aggregate statistict using ```GROUP BY```
 - Subset one of the above datasets using ``` HAVING ```
 -- SQLBook: Code
+
+SELECT "driverId",
+        AVG(milliseconds) AS mean_milliseconds,
+        SUM(milliseconds) AS sum_milliseconds
+FROM nameoftable
+GROUP BY "driverId"
+HAVING SUM(milliseconds) > 50;
+
+--WHERE nationality = 'American'
+
+-- WHERE 在 GROUP BY 前面
+-- HAVING 在 GROUP BY 后面
